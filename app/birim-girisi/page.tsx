@@ -59,6 +59,7 @@ export default function BirimGirisiPage() {
   const [fireGrowthRate, setFireGrowthRate] = useState(12); // Büyüme oranı %
   const [showFireImage, setShowFireImage] = useState(false); // Fire detection image modal
   const [showDetailedReport, setShowDetailedReport] = useState(false); // Detailed report modal
+  const [showDroneVideo, setShowDroneVideo] = useState(false); // Drone video modal (for ogm123)
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -519,6 +520,8 @@ export default function BirimGirisiPage() {
                 onClick={() => {
                   if (currentUser === "Mugla") {
                     setShowFireImage(true);
+                  } else if (currentUser === "ogm123") {
+                    setShowDroneVideo(true);
                   }
                 }}
                 className="w-full text-white py-3 sm:py-4 rounded-lg sm:rounded-xl font-bold text-base sm:text-lg transition-all duration-300 hover:scale-[1.02] flex items-center justify-center space-x-2 sm:space-x-3"
@@ -670,6 +673,147 @@ export default function BirimGirisiPage() {
         </div>
       </div>
     </div>
+
+    {/* Drone Video Modal (for ogm123 user) */}
+    {showDroneVideo && currentUser === "ogm123" && (
+      <div 
+        className="fixed inset-0 z-[10000] flex items-center justify-center bg-black/95 backdrop-blur-sm p-4"
+        onClick={() => setShowDroneVideo(false)}
+      >
+        <div 
+          className="relative max-w-6xl w-full bg-[#303030] rounded-2xl overflow-hidden border-2 shadow-2xl"
+          style={{
+            borderColor: '#00D9A5',
+            boxShadow: '0 20px 60px rgba(0, 217, 165, 0.5)'
+          }}
+          onClick={(e) => e.stopPropagation()}
+        >
+          {/* Header */}
+          <div className="bg-gradient-to-r from-[#00D9A5] to-[#00A87E] px-6 py-4 border-b-2 border-[#00D9A5] flex items-center justify-between">
+            <div className="flex items-center space-x-3">
+              <div className="bg-white/20 p-2 rounded-xl backdrop-blur-sm">
+                <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-white">Canlı Drone Görüntüsü</h3>
+                <p className="text-white/90 text-sm">Gerçek Zamanlı Video İzleme</p>
+              </div>
+            </div>
+            <button
+              onClick={() => setShowDroneVideo(false)}
+              className="text-white hover:bg-white/20 transition-colors p-2 rounded-lg"
+            >
+              <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Video Content */}
+          <div className="p-6">
+            <div className="relative rounded-xl overflow-hidden border-2 border-[#00D9A5]/50 bg-black">
+              <video 
+                className="w-full h-auto"
+                controls
+                autoPlay
+                loop
+                style={{ maxHeight: '70vh' }}
+              >
+                <source src="/G_r_nt_ i_leme g_r_nt_s_.mp4" type="video/mp4" />
+                Tarayıcınız video etiketini desteklemiyor.
+              </video>
+              
+              {/* Live indicator */}
+              <div className="absolute top-4 left-4 bg-red-600 px-4 py-2 rounded-lg flex items-center space-x-2 animate-pulse">
+                <div className="w-3 h-3 bg-white rounded-full"></div>
+                <span className="text-white font-bold text-sm">CANLI YAYIN</span>
+              </div>
+
+              {/* Video info overlay */}
+              <div className="absolute bottom-4 left-4 right-4 bg-black/80 backdrop-blur-sm rounded-lg p-4 border border-[#00D9A5]/50">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                  <div>
+                    <p className="text-[#00D9A5] text-xs font-semibold mb-1">Drone Durumu</p>
+                    <p className="text-white text-sm font-bold">✓ Aktif</p>
+                  </div>
+                  <div>
+                    <p className="text-[#00D9A5] text-xs font-semibold mb-1">Batarya</p>
+                    <p className="text-white text-sm font-bold">%{droneCharge}</p>
+                  </div>
+                  <div>
+                    <p className="text-[#00D9A5] text-xs font-semibold mb-1">Yükseklik</p>
+                    <p className="text-white text-sm font-bold">~120 m</p>
+                  </div>
+                  <div>
+                    <p className="text-[#00D9A5] text-xs font-semibold mb-1">Sinyal Gücü</p>
+                    <p className="text-white text-sm font-bold">Mükemmel</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Control Buttons */}
+            <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <button 
+                className="px-6 py-3 rounded-lg font-bold text-white transition-all hover:scale-105 border-2 flex items-center justify-center space-x-2"
+                style={{
+                  background: 'linear-gradient(to right, #00D9A5, #00A87E)',
+                  borderColor: '#00D9A5'
+                }}
+              >
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
+                </svg>
+                <span>Ekran Görüntüsü Al</span>
+              </button>
+              <button 
+                className="px-6 py-3 rounded-lg font-bold text-white transition-all hover:scale-105 border-2 flex items-center justify-center space-x-2"
+                style={{
+                  background: 'linear-gradient(to right, #3b82f6, #2563eb)',
+                  borderColor: '#3b82f6'
+                }}
+              >
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                  <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
+                </svg>
+                <span>Görüş Alanını Ayarla</span>
+              </button>
+              <button 
+                className="px-6 py-3 rounded-lg font-bold text-white transition-all hover:scale-105 border-2 flex items-center justify-center space-x-2"
+                style={{
+                  background: 'linear-gradient(to right, #8b5cf6, #7c3aed)',
+                  borderColor: '#8b5cf6'
+                }}
+              >
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
+                </svg>
+                <span>Acil İniş</span>
+              </button>
+            </div>
+
+            {/* Info Message */}
+            <div className="mt-4 bg-[#00D9A5]/10 border border-[#00D9A5]/30 rounded-lg p-4">
+              <div className="flex items-start space-x-3">
+                <svg className="w-5 h-5 text-[#00D9A5] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                </svg>
+                <div>
+                  <p className="text-[#00D9A5] font-semibold text-sm">Canlı Video Akışı</p>
+                  <p className="text-gray-300 text-xs mt-1">
+                    Drone şu anda belirlenen rota üzerinde devriye gezmekte ve orman alanını izlemektedir. 
+                    Video akışı gerçek zamanlıdır ve tüm görüntüler güvenli sunucularda kaydedilmektedir.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    )}
 
     {/* Detailed Report Modal */}
     {showDetailedReport && currentUser === "Mugla" && (
