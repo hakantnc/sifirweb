@@ -7,7 +7,7 @@
 - **Şifre:** `admin`
 
 **Birim Girişi (Kemerburgaz):**
-- **Kullanıcı Adı:** `ogm123`
+- **Kullanıcı Adı:** `kemerburgaz123`
 - **Şifre:** `admin`
 
 ---
@@ -16,8 +16,7 @@
 
 ### 1. TKGM Parsel Sorgulama API (Türkiye Resmi)
 - **URL:** https://cbsapi.tkgm.gov.tr/megsiswebapi.v3.1
-- **Durum:** ❌ Ticari kullanım yasak
-- **Açıklama:** Tapu ve Kadastro Genel Müdürlüğü'nün resmi API'si ancak kullanım koşulları ticari kullanıma izin vermiyor.
+
 
 ### 2. OpenStreetMap (OSM) Overpass API
 - **URL:** https://overpass-api.de/api/interpreter
@@ -34,25 +33,7 @@ const query = `
   );
   out geom;
 `;
-```
 
-### 3. Sentinel Hub API (Uydu Görüntüleri)
-- **URL:** https://www.sentinel-hub.com/
-- **Durum:** 💰 Sınırlı ücretsiz, ticari ücretli
-- **Açıklama:** Uydu görüntüleri ile orman alanları tespit edilebilir.
-
----
-
-## 🔥 Yangın Verisi API'leri
-
-### 1. NASA FIRMS (Fire Information for Resource Management System)
-- **URL:** https://firms.modaps.eosdis.nasa.gov/api/
-- **Durum:** ✅ Ücretsiz
-- **Açıklama:** Gerçek zamanlı aktif yangın tespiti. MODIS ve VIIRS uydu verileri.
-- **API Key:** Ücretsiz kayıt gerekir
-- **Örnek Kullanım:**
-```javascript
-// Son 24 saatteki yangınlar (Türkiye)
 const API_KEY = 'YOUR_API_KEY';
 const url = `https://firms.modaps.eosdis.nasa.gov/api/country/csv/${API_KEY}/VIIRS_SNPP_NRT/TUR/1`;
 
@@ -61,17 +42,6 @@ fetch(url)
   .then(data => console.log(data));
 ```
 
-### 2. Copernicus EFFIS (European Forest Fire Information System)
-- **URL:** https://effis.jrc.ec.europa.eu/
-- **Durum:** ✅ Ücretsiz (Avrupa odaklı, Türkiye dahil)
-- **Açıklama:** Orman yangınları için gerçek zamanlı veri ve haritalar.
-
-### 3. Global Forest Watch Fires API
-- **URL:** https://www.globalforestwatch.org/
-- **Durum:** ✅ Ücretsiz
-- **Açıklama:** Küresel orman yangını izleme sistemi.
-
----
 
 ## 📊 Mock Veri Yapısı (Mevcut Uygulama)
 
