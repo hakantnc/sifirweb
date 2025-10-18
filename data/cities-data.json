@@ -1,0 +1,570 @@
+[
+  {
+    "id": 1,
+    "name": "Adana",
+    "fireRisk": 68,
+    "treeType": "Kızılçam, Sedir",
+    "forestRatio": 24
+  },
+  {
+    "id": 2,
+    "name": "Adıyaman",
+    "fireRisk": 45,
+    "treeType": "Meşe, Antep Fıstığı",
+    "forestRatio": 18
+  },
+  {
+    "id": 3,
+    "name": "Afyonkarahisar",
+    "fireRisk": 32,
+    "treeType": "Karaçam, Meşe",
+    "forestRatio": 15
+  },
+  {
+    "id": 4,
+    "name": "Ağrı",
+    "fireRisk": 12,
+    "treeType": "Kavak, Söğüt",
+    "forestRatio": 5
+  },
+  {
+    "id": 5,
+    "name": "Amasya",
+    "fireRisk": 28,
+    "treeType": "Kayın, Göknar",
+    "forestRatio": 42
+  },
+  {
+    "id": 6,
+    "name": "Ankara",
+    "fireRisk": 35,
+    "treeType": "Karaçam, Meşe",
+    "forestRatio": 16
+  },
+  {
+    "id": 7,
+    "name": "Antalya",
+    "fireRisk": 72,
+    "treeType": "Kızılçam, Sedir",
+    "forestRatio": 48
+  },
+  {
+    "id": 8,
+    "name": "Artvin",
+    "fireRisk": 22,
+    "treeType": "Ladin, Göknar",
+    "forestRatio": 65
+  },
+  {
+    "id": 9,
+    "name": "Aydın",
+    "fireRisk": 58,
+    "treeType": "Kızılçam, Meşe",
+    "forestRatio": 31
+  },
+  {
+    "id": 10,
+    "name": "Balıkesir",
+    "fireRisk": 42,
+    "treeType": "Meşe, Karaçam",
+    "forestRatio": 29
+  },
+  {
+    "id": 11,
+    "name": "Bilecik",
+    "fireRisk": 38,
+    "treeType": "Meşe, Karaçam",
+    "forestRatio": 33
+  },
+  {
+    "id": 12,
+    "name": "Bingöl",
+    "fireRisk": 18,
+    "treeType": "Meşe, Kavak",
+    "forestRatio": 14
+  },
+  {
+    "id": 13,
+    "name": "Bitlis",
+    "fireRisk": 15,
+    "treeType": "Meşe, Söğüt",
+    "forestRatio": 8
+  },
+  {
+    "id": 14,
+    "name": "Bolu",
+    "fireRisk": 35,
+    "treeType": "Kayın, Göknar, Meşe",
+    "forestRatio": 58
+  },
+  {
+    "id": 15,
+    "name": "Burdur",
+    "fireRisk": 52,
+    "treeType": "Kızılçam, Karaçam",
+    "forestRatio": 38
+  },
+  {
+    "id": 16,
+    "name": "Bursa",
+    "fireRisk": 45,
+    "treeType": "Kayın, Meşe, Kestane",
+    "forestRatio": 41
+  },
+  {
+    "id": 17,
+    "name": "Çanakkale",
+    "fireRisk": 48,
+    "treeType": "Karaçam, Meşe",
+    "forestRatio": 28
+  },
+  {
+    "id": 18,
+    "name": "Çankırı",
+    "fireRisk": 32,
+    "treeType": "Karaçam, Meşe",
+    "forestRatio": 35
+  },
+  {
+    "id": 19,
+    "name": "Çorum",
+    "fireRisk": 28,
+    "treeType": "Meşe, Karaçam",
+    "forestRatio": 22
+  },
+  {
+    "id": 20,
+    "name": "Denizli",
+    "fireRisk": 55,
+    "treeType": "Kızılçam, Karaçam",
+    "forestRatio": 34
+  },
+  {
+    "id": 21,
+    "name": "Diyarbakır",
+    "fireRisk": 25,
+    "treeType": "Meşe, Antep Fıstığı",
+    "forestRatio": 7
+  },
+  {
+    "id": 22,
+    "name": "Edirne",
+    "fireRisk": 38,
+    "treeType": "Meşe, Kayın",
+    "forestRatio": 24
+  },
+  {
+    "id": 23,
+    "name": "Elazığ",
+    "fireRisk": 32,
+    "treeType": "Meşe, Karaçam",
+    "forestRatio": 19
+  },
+  {
+    "id": 24,
+    "name": "Erzincan",
+    "fireRisk": 22,
+    "treeType": "Ladin, Göknar",
+    "forestRatio": 28
+  },
+  {
+    "id": 25,
+    "name": "Erzurum",
+    "fireRisk": 18,
+    "treeType": "Ladin, Sarıçam",
+    "forestRatio": 12
+  },
+  {
+    "id": 26,
+    "name": "Eskişehir",
+    "fireRisk": 35,
+    "treeType": "Karaçam, Meşe",
+    "forestRatio": 18
+  },
+  {
+    "id": 27,
+    "name": "Gaziantep",
+    "fireRisk": 42,
+    "treeType": "Kızılçam, Antep Fıstığı",
+    "forestRatio": 11
+  },
+  {
+    "id": 28,
+    "name": "Giresun",
+    "fireRisk": 25,
+    "treeType": "Ladin, Kayın, Göknar",
+    "forestRatio": 62
+  },
+  {
+    "id": 29,
+    "name": "Gümüşhane",
+    "fireRisk": 20,
+    "treeType": "Ladin, Göknar",
+    "forestRatio": 48
+  },
+  {
+    "id": 30,
+    "name": "Hakkari",
+    "fireRisk": 15,
+    "treeType": "Meşe, Söğüt",
+    "forestRatio": 9
+  },
+  {
+    "id": 31,
+    "name": "Hatay",
+    "fireRisk": 65,
+    "treeType": "Kızılçam, Sedir",
+    "forestRatio": 27
+  },
+  {
+    "id": 32,
+    "name": "Isparta",
+    "fireRisk": 48,
+    "treeType": "Karaçam, Sedir, Göknar",
+    "forestRatio": 45
+  },
+  {
+    "id": 33,
+    "name": "Mersin",
+    "fireRisk": 70,
+    "treeType": "Kızılçam, Sedir",
+    "forestRatio": 36
+  },
+  {
+    "id": 34,
+    "name": "İstanbul",
+    "fireRisk": 42,
+    "treeType": "Meşe, Kayın, Karaçam",
+    "forestRatio": 21
+  },
+  {
+    "id": 35,
+    "name": "İzmir",
+    "fireRisk": 62,
+    "treeType": "Kızılçam, Meşe",
+    "forestRatio": 33
+  },
+  {
+    "id": 36,
+    "name": "Kars",
+    "fireRisk": 10,
+    "treeType": "Kavak, Söğüt",
+    "forestRatio": 4
+  },
+  {
+    "id": 37,
+    "name": "Kastamonu",
+    "fireRisk": 28,
+    "treeType": "Kayın, Göknar, Meşe",
+    "forestRatio": 61
+  },
+  {
+    "id": 38,
+    "name": "Kayseri",
+    "fireRisk": 30,
+    "treeType": "Karaçam, Sedir",
+    "forestRatio": 13
+  },
+  {
+    "id": 39,
+    "name": "Kırklareli",
+    "fireRisk": 38,
+    "treeType": "Meşe, Kayın",
+    "forestRatio": 36
+  },
+  {
+    "id": 40,
+    "name": "Kırşehir",
+    "fireRisk": 28,
+    "treeType": "Karaçam, Meşe",
+    "forestRatio": 11
+  },
+  {
+    "id": 41,
+    "name": "Kocaeli",
+    "fireRisk": 40,
+    "treeType": "Kayın, Meşe, Göknar",
+    "forestRatio": 44
+  },
+  {
+    "id": 42,
+    "name": "Konya",
+    "fireRisk": 35,
+    "treeType": "Karaçam, Sedir",
+    "forestRatio": 8
+  },
+  {
+    "id": 43,
+    "name": "Kütahya",
+    "fireRisk": 38,
+    "treeType": "Karaçam, Meşe",
+    "forestRatio": 25
+  },
+  {
+    "id": 44,
+    "name": "Malatya",
+    "fireRisk": 32,
+    "treeType": "Meşe, Karaçam",
+    "forestRatio": 16
+  },
+  {
+    "id": 45,
+    "name": "Manisa",
+    "fireRisk": 52,
+    "treeType": "Kızılçam, Meşe",
+    "forestRatio": 36
+  },
+  {
+    "id": 46,
+    "name": "Kahramanmaraş",
+    "fireRisk": 48,
+    "treeType": "Kızılçam, Karaçam",
+    "forestRatio": 23
+  },
+  {
+    "id": 47,
+    "name": "Mardin",
+    "fireRisk": 22,
+    "treeType": "Meşe, Antep Fıstığı",
+    "forestRatio": 6
+  },
+  {
+    "id": 48,
+    "name": "Muğla",
+    "fireRisk": 75,
+    "treeType": "Kızılçam, Meşe, Sedir",
+    "forestRatio": 52
+  },
+  {
+    "id": 49,
+    "name": "Muş",
+    "fireRisk": 15,
+    "treeType": "Meşe, Kavak",
+    "forestRatio": 7
+  },
+  {
+    "id": 50,
+    "name": "Nevşehir",
+    "fireRisk": 28,
+    "treeType": "Karaçam, Meşe",
+    "forestRatio": 9
+  },
+  {
+    "id": 51,
+    "name": "Niğde",
+    "fireRisk": 32,
+    "treeType": "Karaçam, Sedir",
+    "forestRatio": 12
+  },
+  {
+    "id": 52,
+    "name": "Ordu",
+    "fireRisk": 28,
+    "treeType": "Ladin, Kayın, Göknar",
+    "forestRatio": 56
+  },
+  {
+    "id": 53,
+    "name": "Rize",
+    "fireRisk": 20,
+    "treeType": "Ladin, Kayın, Göknar",
+    "forestRatio": 68
+  },
+  {
+    "id": 54,
+    "name": "Sakarya",
+    "fireRisk": 38,
+    "treeType": "Kayın, Meşe, Göknar",
+    "forestRatio": 48
+  },
+  {
+    "id": 55,
+    "name": "Samsun",
+    "fireRisk": 32,
+    "treeType": "Kayın, Meşe, Ladin",
+    "forestRatio": 44
+  },
+  {
+    "id": 56,
+    "name": "Siirt",
+    "fireRisk": 25,
+    "treeType": "Meşe, Antep Fıstığı",
+    "forestRatio": 11
+  },
+  {
+    "id": 57,
+    "name": "Sinop",
+    "fireRisk": 25,
+    "treeType": "Kayın, Göknar, Meşe",
+    "forestRatio": 64
+  },
+  {
+    "id": 58,
+    "name": "Sivas",
+    "fireRisk": 28,
+    "treeType": "Karaçam, Ladin",
+    "forestRatio": 22
+  },
+  {
+    "id": 59,
+    "name": "Tekirdağ",
+    "fireRisk": 38,
+    "treeType": "Meşe, Kayın",
+    "forestRatio": 19
+  },
+  {
+    "id": 60,
+    "name": "Tokat",
+    "fireRisk": 30,
+    "treeType": "Meşe, Karaçam, Kayın",
+    "forestRatio": 38
+  },
+  {
+    "id": 61,
+    "name": "Trabzon",
+    "fireRisk": 22,
+    "treeType": "Ladin, Kayın, Göknar",
+    "forestRatio": 59
+  },
+  {
+    "id": 62,
+    "name": "Tunceli",
+    "fireRisk": 20,
+    "treeType": "Meşe, Karaçam",
+    "forestRatio": 32
+  },
+  {
+    "id": 63,
+    "name": "Şanlıurfa",
+    "fireRisk": 28,
+    "treeType": "Meşe, Antep Fıstığı",
+    "forestRatio": 5
+  },
+  {
+    "id": 64,
+    "name": "Uşak",
+    "fireRisk": 45,
+    "treeType": "Karaçam, Meşe",
+    "forestRatio": 27
+  },
+  {
+    "id": 65,
+    "name": "Van",
+    "fireRisk": 18,
+    "treeType": "Meşe, Kavak",
+    "forestRatio": 8
+  },
+  {
+    "id": 66,
+    "name": "Yozgat",
+    "fireRisk": 30,
+    "treeType": "Karaçam, Meşe",
+    "forestRatio": 15
+  },
+  {
+    "id": 67,
+    "name": "Zonguldak",
+    "fireRisk": 32,
+    "treeType": "Kayın, Meşe, Göknar",
+    "forestRatio": 54
+  },
+  {
+    "id": 68,
+    "name": "Aksaray",
+    "fireRisk": 28,
+    "treeType": "Karaçam, Meşe",
+    "forestRatio": 7
+  },
+  {
+    "id": 69,
+    "name": "Bayburt",
+    "fireRisk": 18,
+    "treeType": "Ladin, Göknar",
+    "forestRatio": 42
+  },
+  {
+    "id": 70,
+    "name": "Karaman",
+    "fireRisk": 32,
+    "treeType": "Karaçam, Sedir",
+    "forestRatio": 11
+  },
+  {
+    "id": 71,
+    "name": "Kırıkkale",
+    "fireRisk": 30,
+    "treeType": "Karaçam, Meşe",
+    "forestRatio": 13
+  },
+  {
+    "id": 72,
+    "name": "Batman",
+    "fireRisk": 22,
+    "treeType": "Meşe, Antep Fıstığı",
+    "forestRatio": 9
+  },
+  {
+    "id": 73,
+    "name": "Şırnak",
+    "fireRisk": 20,
+    "treeType": "Meşe, Antep Fıstığı",
+    "forestRatio": 10
+  },
+  {
+    "id": 74,
+    "name": "Bartın",
+    "fireRisk": 30,
+    "treeType": "Kayın, Göknar, Meşe",
+    "forestRatio": 60
+  },
+  {
+    "id": 75,
+    "name": "Ardahan",
+    "fireRisk": 12,
+    "treeType": "Ladin, Göknar",
+    "forestRatio": 38
+  },
+  {
+    "id": 76,
+    "name": "Iğdır",
+    "fireRisk": 15,
+    "treeType": "Kavak, Söğüt",
+    "forestRatio": 3
+  },
+  {
+    "id": 77,
+    "name": "Yalova",
+    "fireRisk": 40,
+    "treeType": "Kayın, Meşe, Kestane",
+    "forestRatio": 46
+  },
+  {
+    "id": 78,
+    "name": "Karabük",
+    "fireRisk": 32,
+    "treeType": "Kayın, Göknar, Meşe",
+    "forestRatio": 57
+  },
+  {
+    "id": 79,
+    "name": "Kilis",
+    "fireRisk": 38,
+    "treeType": "Kızılçam, Antep Fıstığı",
+    "forestRatio": 8
+  },
+  {
+    "id": 80,
+    "name": "Osmaniye",
+    "fireRisk": 62,
+    "treeType": "Kızılçam, Sedir",
+    "forestRatio": 31
+  },
+  {
+    "id": 81,
+    "name": "Düzce",
+    "fireRisk": 35,
+    "treeType": "Kayın, Göknar, Meşe",
+    "forestRatio": 53
+  }
+]
+
