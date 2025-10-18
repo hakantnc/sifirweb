@@ -849,7 +849,7 @@ export default function OGMMap() {
           // Fire risk layer
           layer.setStyle({
             fillOpacity: showFireRisk ? 0.4 : 0,
-            opacity: showFireRisk && options.weight > 0 ? 0.6 : 0,
+            opacity: showFireRisk && (options.weight ?? 0) > 0 ? 0.6 : 0,
           });
         } else {
           // Tree type layer
