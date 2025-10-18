@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import citiesData from "@/data/cities-data.json";
-import turkeyGeoJSON from "@/data/Turkey-Maps-GeoJSON/tr-cities.json";
+import turkeyGeoJSON from "@/data/tr-cities.json";
 
 interface CityData {
   id: number;
