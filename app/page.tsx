@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
+import TreeInfoSection from "@/components/TreeInfoSection";
 import TurkeyMap from "@/components/TurkeyMap";
 
 export default function Home() {
@@ -9,6 +10,8 @@ export default function Home() {
       <main>
         <HeroSection />
         <TurkeyMap />
+
+        <TreeInfoSection />
       </main>
     </div>
   );

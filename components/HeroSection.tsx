@@ -38,12 +38,12 @@ export default function HeroSection() {
 
           {/* Main Heading */}
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight" style={{ 
-            background: 'linear-gradient(to right, #00D9A5, #00FFC6, #00D9A5)',
+            background: 'linear-gradient(to right, #FF4444, #FF6B6B, #FFA500, #00D9A5, #00D9A5)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text'
           }}>
-            YANMASIN
+            FEBRESEE
           </h1>
 
           <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
@@ -58,7 +58,7 @@ export default function HeroSection() {
             boxShadow: '0 8px 32px rgba(0, 217, 165, 0.1)'
           }}>
             <p className="text-gray-200 text-lg leading-relaxed mb-4">
-              YANMASIN projesi, yapay zeka destekli drone teknolojisi kullanarak orman yangınlarını erken tespit eder ve müdahale süresini minimize eder.
+              FEBRESEE projesi, yapay zeka destekli drone teknolojisi kullanarak orman yangınlarını erken tespit eder ve müdahale süresini minimize eder.
             </p>
             <p className="text-gray-200 text-lg leading-relaxed">
               Ağaç tipi analizi, termal kamera görüntüleme ve rüzgar sensörleri ile donatılmış devriye dronelarımız, 15 dakikalık periyodlarla risk bölgelerini tarar ve yangın tespit edildiğinde anlık raporlama yapar.

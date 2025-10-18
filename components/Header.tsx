@@ -33,11 +33,12 @@ export default function Header() {
               </svg>
             </div>
             <span className="text-2xl font-bold" style={{
-              background: 'linear-gradient(to right, #00D9A5, #00FFC6)',
+              background: 'linear-gradient(to right, #FF4444, #FF6B6B, #FFA500, #00D9A5, #00D9A5)',
               WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent'
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
             }}>
-              YANMASIN
+              FEBRESEE
             </span>
           </div>
 
