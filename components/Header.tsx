@@ -43,47 +43,36 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <a
-              href="#anasayfa"
-              className="text-gray-300 transition-colors font-medium"
-              style={{ 
-                textDecoration: 'none'
+           
+            
+            
+            {/* Login Buttons */}
+            <div className="flex items-center space-x-3">
+              <button className="text-white px-5 py-2 rounded-lg transition-all duration-300 hover:scale-105 border-2 font-medium" style={{
+                backgroundColor: 'transparent',
+                borderColor: '#00D9A5',
+                color: '#00D9A5'
               }}
-              onMouseEnter={(e) => e.currentTarget.style.color = '#00D9A5'}
-              onMouseLeave={(e) => e.currentTarget.style.color = '#d1d5db'}
-            >
-              Anasayfa
-            </a>
-            <a
-              href="#harita"
-              className="text-gray-300 transition-colors font-medium"
-              onMouseEnter={(e) => e.currentTarget.style.color = '#00D9A5'}
-              onMouseLeave={(e) => e.currentTarget.style.color = '#d1d5db'}
-            >
-              Harita
-            </a>
-            <a
-              href="#hakkimizda"
-              className="text-gray-300 transition-colors font-medium"
-              onMouseEnter={(e) => e.currentTarget.style.color = '#00D9A5'}
-              onMouseLeave={(e) => e.currentTarget.style.color = '#d1d5db'}
-            >
-              Hakkımızda
-            </a>
-            <a
-              href="#iletisim"
-              className="text-gray-300 transition-colors font-medium"
-              onMouseEnter={(e) => e.currentTarget.style.color = '#00D9A5'}
-              onMouseLeave={(e) => e.currentTarget.style.color = '#d1d5db'}
-            >
-              İletişim
-            </a>
-            <button className="text-white px-6 py-2 rounded-lg transition-all duration-300 hover:scale-105" style={{
-              background: 'linear-gradient(to right, #00D9A5, #00A87E)',
-              boxShadow: '0 2px 10px rgba(0, 217, 165, 0.3)'
-            }}>
-              Mobil Uygulama
-            </button>
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#00D9A5';
+                e.currentTarget.style.color = 'white';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'transparent';
+                e.currentTarget.style.color = '#00D9A5';
+              }}
+              >
+                OGM Girişi
+              </button>
+              <a href="/birim-girisi">
+                <button className="text-white px-5 py-2 rounded-lg transition-all duration-300 hover:scale-105 font-medium" style={{
+                  background: 'linear-gradient(to right, #00D9A5, #00A87E)',
+                  boxShadow: '0 2px 10px rgba(0, 217, 165, 0.3)'
+                }}>
+                  Birim Girişi
+                </button>
+              </a>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -144,20 +133,25 @@ export default function Header() {
             >
               Hakkımızda
             </a>
-            <a
-              href="#iletisim"
-              className="block text-gray-300 transition-colors font-medium"
-              onMouseEnter={(e) => e.currentTarget.style.color = '#00D9A5'}
-              onMouseLeave={(e) => e.currentTarget.style.color = '#d1d5db'}
-            >
-              İletişim
-            </a>
-            <button className="w-full text-white px-6 py-2 rounded-lg transition-all duration-300" style={{
-              background: 'linear-gradient(to right, #00D9A5, #00A87E)',
-              boxShadow: '0 2px 10px rgba(0, 217, 165, 0.3)'
-            }}>
-              Mobil Uygulama
-            </button>
+            
+            {/* Login Buttons */}
+            <div className="space-y-3 pt-2">
+              <button className="w-full text-white px-6 py-2 rounded-lg transition-all duration-300 border-2 font-medium" style={{
+                backgroundColor: 'transparent',
+                borderColor: '#00D9A5',
+                color: '#00D9A5'
+              }}>
+                OGM Girişi
+              </button>
+              <a href="/birim-girisi" className="block">
+                <button className="w-full text-white px-6 py-2 rounded-lg transition-all duration-300 font-medium" style={{
+                  background: 'linear-gradient(to right, #00D9A5, #00A87E)',
+                  boxShadow: '0 2px 10px rgba(0, 217, 165, 0.3)'
+                }}>
+                  Birim Girişi
+                </button>
+              </a>
+            </div>
           </div>
         )}
       </nav>
