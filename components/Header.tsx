@@ -48,22 +48,24 @@ export default function Header() {
             
             {/* Login Buttons */}
             <div className="flex items-center space-x-3">
-              <button className="text-white px-5 py-2 rounded-lg transition-all duration-300 hover:scale-105 border-2 font-medium" style={{
-                backgroundColor: 'transparent',
-                borderColor: '#00D9A5',
-                color: '#00D9A5'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#00D9A5';
-                e.currentTarget.style.color = 'white';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = 'transparent';
-                e.currentTarget.style.color = '#00D9A5';
-              }}
-              >
-                OGM Girişi
-              </button>
+              <a href="/ogm-girisi">
+                <button className="text-white px-5 py-2 rounded-lg transition-all duration-300 hover:scale-105 border-2 font-medium" style={{
+                  backgroundColor: 'transparent',
+                  borderColor: '#00D9A5',
+                  color: '#00D9A5'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = '#00D9A5';
+                  e.currentTarget.style.color = 'white';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                  e.currentTarget.style.color = '#00D9A5';
+                }}
+                >
+                  OGM Girişi
+                </button>
+              </a>
               <a href="/birim-girisi">
                 <button className="text-white px-5 py-2 rounded-lg transition-all duration-300 hover:scale-105 font-medium" style={{
                   background: 'linear-gradient(to right, #00D9A5, #00A87E)',
@@ -136,13 +138,15 @@ export default function Header() {
             
             {/* Login Buttons */}
             <div className="space-y-3 pt-2">
-              <button className="w-full text-white px-6 py-2 rounded-lg transition-all duration-300 border-2 font-medium" style={{
-                backgroundColor: 'transparent',
-                borderColor: '#00D9A5',
-                color: '#00D9A5'
-              }}>
-                OGM Girişi
-              </button>
+              <a href="/ogm-girisi" className="block">
+                <button className="w-full text-white px-6 py-2 rounded-lg transition-all duration-300 border-2 font-medium" style={{
+                  backgroundColor: 'transparent',
+                  borderColor: '#00D9A5',
+                  color: '#00D9A5'
+                }}>
+                  OGM Girişi
+                </button>
+              </a>
               <a href="/birim-girisi" className="block">
                 <button className="w-full text-white px-6 py-2 rounded-lg transition-all duration-300 font-medium" style={{
                   background: 'linear-gradient(to right, #00D9A5, #00A87E)',

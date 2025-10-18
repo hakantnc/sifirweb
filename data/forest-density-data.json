@@ -1,0 +1,251 @@
+[
+  {
+    "cityName": "Muğla",
+    "dominantTree": "Kızılçam",
+    "forestDensity": 75,
+    "fireRisk": 82,
+    "color": "#8B4513",
+    "treeColor": "#2D5016"
+  },
+  {
+    "cityName": "Antalya",
+    "dominantTree": "Kızılçam",
+    "forestDensity": 68,
+    "fireRisk": 78,
+    "color": "#8B4513",
+    "treeColor": "#2D5016"
+  },
+  {
+    "cityName": "Mersin",
+    "dominantTree": "Kızılçam",
+    "forestDensity": 52,
+    "fireRisk": 75,
+    "color": "#8B4513",
+    "treeColor": "#2D5016"
+  },
+  {
+    "cityName": "Adana",
+    "dominantTree": "Kızılçam",
+    "forestDensity": 35,
+    "fireRisk": 68,
+    "color": "#8B4513",
+    "treeColor": "#3A5F23"
+  },
+  {
+    "cityName": "Hatay",
+    "dominantTree": "Kızılçam",
+    "forestDensity": 42,
+    "fireRisk": 72,
+    "color": "#8B4513",
+    "treeColor": "#2D5016"
+  },
+  {
+    "cityName": "İzmir",
+    "dominantTree": "Kızılçam",
+    "forestDensity": 48,
+    "fireRisk": 70,
+    "color": "#8B4513",
+    "treeColor": "#3A5F23"
+  },
+  {
+    "cityName": "Aydın",
+    "dominantTree": "Kızılçam",
+    "forestDensity": 45,
+    "fireRisk": 66,
+    "color": "#8B4513",
+    "treeColor": "#3A5F23"
+  },
+  {
+    "cityName": "Manisa",
+    "dominantTree": "Kızılçam",
+    "forestDensity": 50,
+    "fireRisk": 62,
+    "color": "#8B4513",
+    "treeColor": "#3A5F23"
+  },
+  {
+    "cityName": "Balıkesir",
+    "dominantTree": "Meşe",
+    "forestDensity": 42,
+    "fireRisk": 52,
+    "color": "#654321",
+    "treeColor": "#4A6741"
+  },
+  {
+    "cityName": "Çanakkale",
+    "dominantTree": "Meşe",
+    "forestDensity": 38,
+    "fireRisk": 55,
+    "color": "#654321",
+    "treeColor": "#4A6741"
+  },
+  {
+    "cityName": "Bursa",
+    "dominantTree": "Kayın",
+    "forestDensity": 58,
+    "fireRisk": 48,
+    "color": "#556B2F",
+    "treeColor": "#4F7942"
+  },
+  {
+    "cityName": "Kocaeli",
+    "dominantTree": "Kayın",
+    "forestDensity": 62,
+    "fireRisk": 45,
+    "color": "#556B2F",
+    "treeColor": "#4F7942"
+  },
+  {
+    "cityName": "Sakarya",
+    "dominantTree": "Kayın",
+    "forestDensity": 65,
+    "fireRisk": 42,
+    "color": "#556B2F",
+    "treeColor": "#537D3A"
+  },
+  {
+    "cityName": "Bolu",
+    "dominantTree": "Göknar",
+    "forestDensity": 78,
+    "fireRisk": 38,
+    "color": "#2F4F4F",
+    "treeColor": "#2C5530"
+  },
+  {
+    "cityName": "Düzce",
+    "dominantTree": "Kayın",
+    "forestDensity": 72,
+    "fireRisk": 40,
+    "color": "#556B2F",
+    "treeColor": "#4F7942"
+  },
+  {
+    "cityName": "Kastamonu",
+    "dominantTree": "Kayın",
+    "forestDensity": 82,
+    "fireRisk": 32,
+    "color": "#556B2F",
+    "treeColor": "#5A8F47"
+  },
+  {
+    "cityName": "Sinop",
+    "dominantTree": "Kayın",
+    "forestDensity": 85,
+    "fireRisk": 28,
+    "color": "#556B2F",
+    "treeColor": "#5A8F47"
+  },
+  {
+    "cityName": "Bartın",
+    "dominantTree": "Kayın",
+    "forestDensity": 80,
+    "fireRisk": 30,
+    "color": "#556B2F",
+    "treeColor": "#5A8F47"
+  },
+  {
+    "cityName": "Zonguldak",
+    "dominantTree": "Kayın",
+    "forestDensity": 75,
+    "fireRisk": 35,
+    "color": "#556B2F",
+    "treeColor": "#537D3A"
+  },
+  {
+    "cityName": "Karabük",
+    "dominantTree": "Kayın",
+    "forestDensity": 78,
+    "fireRisk": 33,
+    "color": "#556B2F",
+    "treeColor": "#5A8F47"
+  },
+  {
+    "cityName": "Rize",
+    "dominantTree": "Ladin",
+    "forestDensity": 88,
+    "fireRisk": 22,
+    "color": "#006400",
+    "treeColor": "#1E4620"
+  },
+  {
+    "cityName": "Trabzon",
+    "dominantTree": "Ladin",
+    "forestDensity": 85,
+    "fireRisk": 25,
+    "color": "#006400",
+    "treeColor": "#1E4620"
+  },
+  {
+    "cityName": "Artvin",
+    "dominantTree": "Ladin",
+    "forestDensity": 90,
+    "fireRisk": 20,
+    "color": "#006400",
+    "treeColor": "#1A3D1F"
+  },
+  {
+    "cityName": "Giresun",
+    "dominantTree": "Ladin",
+    "forestDensity": 82,
+    "fireRisk": 26,
+    "color": "#006400",
+    "treeColor": "#1E4620"
+  },
+  {
+    "cityName": "Ordu",
+    "dominantTree": "Ladin",
+    "forestDensity": 78,
+    "fireRisk": 30,
+    "color": "#006400",
+    "treeColor": "#1E4620"
+  },
+  {
+    "cityName": "Gümüşhane",
+    "dominantTree": "Ladin",
+    "forestDensity": 70,
+    "fireRisk": 28,
+    "color": "#006400",
+    "treeColor": "#22501F"
+  },
+  {
+    "cityName": "Isparta",
+    "dominantTree": "Karaçam",
+    "forestDensity": 68,
+    "fireRisk": 58,
+    "color": "#3B5323",
+    "treeColor": "#3D5E2B"
+  },
+  {
+    "cityName": "Burdur",
+    "dominantTree": "Karaçam",
+    "forestDensity": 55,
+    "fireRisk": 62,
+    "color": "#3B5323",
+    "treeColor": "#3D5E2B"
+  },
+  {
+    "cityName": "Denizli",
+    "dominantTree": "Karaçam",
+    "forestDensity": 48,
+    "fireRisk": 64,
+    "color": "#3B5323",
+    "treeColor": "#3D5E2B"
+  },
+  {
+    "cityName": "Kahramanmaraş",
+    "dominantTree": "Kızılçam",
+    "forestDensity": 38,
+    "fireRisk": 65,
+    "color": "#8B4513",
+    "treeColor": "#3A5F23"
+  },
+  {
+    "cityName": "Osmaniye",
+    "dominantTree": "Kızılçam",
+    "forestDensity": 45,
+    "fireRisk": 70,
+    "color": "#8B4513",
+    "treeColor": "#2D5016"
+  }
+]
+

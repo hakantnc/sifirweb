@@ -40,7 +40,7 @@ export default function BirimGirisiPage() {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (username === "Kemerburgaz" && password === "admin") {
+    if (username === "ogm123" && password === "admin") {
       setIsLoggedIn(true);
       setError("");
     } else {
@@ -187,12 +187,12 @@ export default function BirimGirisiPage() {
             {/* Demo Credentials - For Presentation */}
             <div className="mt-6 pt-6 border-t" style={{ borderColor: 'rgba(0, 217, 165, 0.2)' }}>
               <p className="text-gray-400 text-xs text-center mb-3 font-semibold">
-                📋 Demo Giriş Bilgileri (Sunum İçin)
+                📋 OGM Giriş Bilgileri
               </p>
               <div className="bg-[#505050] rounded-lg p-3 space-y-2">
                 <div className="flex justify-between items-center">
                   <span className="text-gray-400 text-xs">Kullanıcı Adı:</span>
-                  <span className="text-white font-mono text-sm font-semibold">Kemerburgaz</span>
+                  <span className="text-white font-mono text-sm font-semibold">ogm123</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-gray-400 text-xs">Şifre:</span>
