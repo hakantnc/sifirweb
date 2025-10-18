@@ -37,7 +37,7 @@ const FireMap = dynamic(() => import("@/components/FireMap"), {
 
 export default function BirimGirisiPage() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [currentUser, setCurrentUser] = useState<"ogm123" | "Mugla" | "">("");
+  const [currentUser, setCurrentUser] = useState<"Malatya" | "Mugla" | "">("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -52,6 +52,7 @@ export default function BirimGirisiPage() {
   const [movementDetected, setMovementDetected] = useState(0); // Hareket oranı %
   const [windSpeed, setWindSpeed] = useState(15); // Rüzgar hızı km/h
   const [windDirection, setWindDirection] = useState("KB"); // Rüzgar yönü
+  const [temperature, setTemperature] = useState(28); // Sıcaklık (Login ile ayarlanır)
   
   // Fire detection data (for Mugla user)
   const [fireLocation] = useState<[number, number]>([37.0892, 28.7458]); // Muğla orman bölgesi (Köyceğiz yakınları)
@@ -59,20 +60,22 @@ export default function BirimGirisiPage() {
   const [fireGrowthRate, setFireGrowthRate] = useState(12); // Büyüme oranı %
   const [showFireImage, setShowFireImage] = useState(false); // Fire detection image modal
   const [showDetailedReport, setShowDetailedReport] = useState(false); // Detailed report modal
-  const [showDroneVideo, setShowDroneVideo] = useState(false); // Drone video modal (for ogm123)
+  const [showDroneVideo, setShowDroneVideo] = useState(false); // Drone video modal (for Malatya)
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (username === "ogm123" && password === "admin") {
+    if (username === "Malatya" && password === "admin") {
       setIsLoggedIn(true);
-      setCurrentUser("ogm123");
+      setCurrentUser("Malatya");
       setFireRisk(3); // Normal kullanıcı için düşük risk
+      setTemperature(28); // Normal sıcaklık
       setError("");
     } else if (username === "Mugla" && password === "admin") {
       setIsLoggedIn(true);
       setCurrentUser("Mugla");
       setFireRisk(88); // Yangın tespit edilen bölge için yüksek risk
+      setTemperature(73); // Yüksek yangın bölgesi sıcaklığı
       setError("");
     } else {
       setError("Kullanıcı adı veya şifre hatalı!");
@@ -137,6 +140,10 @@ export default function BirimGirisiPage() {
         // Fluctuate fire potential (80-90%)
         const randomPotential = 80 + Math.floor(Math.random() * 11);
         setFirePotential(randomPotential);
+        
+        // Fluctuate temperature for high-risk area (70-75°C)
+        const randomTemp = 70 + Math.floor(Math.random() * 6);
+        setTemperature(randomTemp);
       }, 3000); // Update every 3 seconds
 
       return () => clearInterval(interval);
@@ -239,10 +246,10 @@ export default function BirimGirisiPage() {
               </p>
               <div className="space-y-3">
                 <div className="bg-[#505050] rounded-lg p-3 space-y-2">
-                  <p className="text-gray-300 text-xs font-semibold mb-2">OGM Kullanıcısı</p>
+                  <p className="text-gray-300 text-xs font-semibold mb-2"></p>
                   <div className="flex justify-between items-center">
                     <span className="text-gray-400 text-xs">Kullanıcı Adı:</span>
-                    <span className="text-white font-mono text-sm font-semibold">ogm123</span>
+                    <span className="text-white font-mono text-sm font-semibold">Malatya</span>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-gray-400 text-xs">Şifre:</span>
@@ -251,7 +258,7 @@ export default function BirimGirisiPage() {
                 </div>
                 
                 <div className="bg-[#505050] rounded-lg p-3 space-y-2">
-                  <p className="text-red-400 text-xs font-semibold mb-2">🔥 Yangın İzleme</p>
+                  <p className="text-red-400 text-xs font-semibold mb-2">🔥Potansiyel Yangın İzleme</p>
                   <div className="flex justify-between items-center">
                     <span className="text-gray-400 text-xs">Kullanıcı Adı:</span>
                     <span className="text-white font-mono text-sm font-semibold">Mugla</span>
@@ -293,7 +300,7 @@ export default function BirimGirisiPage() {
                 </div>
                 <div className="flex-1">
                   <h2 className="text-xl sm:text-2xl font-bold text-red-400 mb-2 flex items-center gap-2">
-                    <span>⚠️ YANGIN TESPİT EDİLDİ</span>
+                    <span>⚠️ YÜKSEK YANGIN POTANSİYELİ</span>
                   </h2>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 text-sm sm:text-base">
                     <div>
@@ -324,7 +331,7 @@ export default function BirimGirisiPage() {
           <div className="mb-6 sm:mb-8 flex items-center justify-between flex-wrap gap-4">
             <div>
               <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2">
-                {currentUser === "Mugla" ? "Yangın Tespit ve Kontrol Paneli" : "Birim Kontrol Paneli"}
+                {currentUser === "Mugla" ? "Potansiyel Yangın Tespit ve Kontrol Paneli" : "Birim Kontrol Paneli"}
               </h1>
               <p className="text-sm sm:text-base text-gray-300">
                 {currentUser === "Mugla" ? "Orman yangını izleme sistemi" : "Drone izleme ve kontrol sistemi"}
@@ -437,22 +444,24 @@ export default function BirimGirisiPage() {
               className="rounded-xl p-4 border-2"
               style={{
                 backgroundColor: '#404040',
-                borderColor: '#00D9A5',
-                boxShadow: '0 4px 15px rgba(0, 217, 165, 0.2)'
+                borderColor: temperature >= 60 ? '#ef4444' : '#00D9A5',
+                boxShadow: temperature >= 60 ? '0 4px 15px rgba(239, 68, 68, 0.2)' : '0 4px 15px rgba(0, 217, 165, 0.2)'
               }}
             >
               <div className="flex items-center justify-between mb-2">
                 <span className="text-gray-300 text-xs sm:text-sm font-medium">Sıcaklık</span>
-                <svg className="w-5 h-5" style={{ color: '#fb923c' }} fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-5 h-5" style={{ color: temperature >= 60 ? '#ef4444' : '#fb923c' }} fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 2a1 1 0 011 1v7.586l2.707 2.707a1 1 0 11-1.414 1.414L9 11.414V3a1 1 0 011-1z" clipRule="evenodd" />
                   <path d="M6 12v-2a4 4 0 118 0v2a4 4 0 11-8 0z" />
                 </svg>
               </div>
-              <div className="text-3xl font-bold text-white">
-                28 <span className="text-lg">°C</span>
+              <div className="text-3xl font-bold" style={{ 
+                color: temperature >= 60 ? '#ef4444' : 'white'
+              }}>
+                {temperature} <span className="text-lg">°C</span>
               </div>
               <p className="text-gray-400 text-xs mt-1">
-                Nem: %65
+                Nem: {temperature >= 60 ? '%15' : '%65'}
               </p>
             </div>
           </div>
@@ -476,7 +485,7 @@ export default function BirimGirisiPage() {
                       <svg className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7" style={{ color: '#ef4444' }} fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z" clipRule="evenodd" />
                       </svg>
-                      <span>Yangın Bölgesi Haritası</span>
+                      <span>Potansiyel Yangın Bölgesi Haritası</span>
                     </>
                   ) : (
                     <>
@@ -520,7 +529,7 @@ export default function BirimGirisiPage() {
                 onClick={() => {
                   if (currentUser === "Mugla") {
                     setShowFireImage(true);
-                  } else if (currentUser === "ogm123") {
+                  } else if (currentUser === "Malatya") {
                     setShowDroneVideo(true);
                   }
                 }}
@@ -539,7 +548,7 @@ export default function BirimGirisiPage() {
                     <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                     </svg>
-                    <span>Yangın Yerini Görüntüle</span>
+                    <span>Potansiyel Yangın Yerini Görüntüle</span>
                   </>
                 ) : (
                   <>
@@ -674,8 +683,8 @@ export default function BirimGirisiPage() {
       </div>
     </div>
 
-    {/* Drone Video Modal (for ogm123 user) */}
-    {showDroneVideo && currentUser === "ogm123" && (
+    {/* Drone Video Modal (for Malatya user) */}
+    {showDroneVideo && currentUser === "Malatya" && (
       <div 
         className="fixed inset-0 z-[10000] flex items-center justify-center bg-black/95 backdrop-blur-sm p-4"
         onClick={() => setShowDroneVideo(false)}
@@ -698,7 +707,7 @@ export default function BirimGirisiPage() {
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-white">Canlı Drone Görüntüsü</h3>
-                <p className="text-white/90 text-sm">Gerçek Zamanlı Video İzleme</p>
+                <p className="text-white/90 text-sm">Görüntü Demo Görüntüsüdür</p>
               </div>
             </div>
             <button
@@ -712,7 +721,7 @@ export default function BirimGirisiPage() {
           </div>
 
           {/* Video Content */}
-          <div className="p-6">
+          <div className="p-4 sm:p-6">
             <div className="relative rounded-xl overflow-hidden border-2 border-[#00D9A5]/50 bg-black">
               <video 
                 className="w-full h-auto"
@@ -726,30 +735,30 @@ export default function BirimGirisiPage() {
               </video>
               
               {/* Live indicator */}
-              <div className="absolute top-4 left-4 bg-red-600 px-4 py-2 rounded-lg flex items-center space-x-2 animate-pulse">
-                <div className="w-3 h-3 bg-white rounded-full"></div>
-                <span className="text-white font-bold text-sm">CANLI YAYIN</span>
+              <div className="absolute top-2 sm:top-4 left-2 sm:left-4 bg-red-600 px-2 sm:px-4 py-1 sm:py-2 rounded-lg flex items-center space-x-1 sm:space-x-2 animate-pulse">
+                <div className="w-2 h-2 sm:w-3 sm:h-3 bg-white rounded-full"></div>
+                <span className="text-white font-bold text-xs sm:text-sm">CANLI YAYIN</span>
               </div>
+            </div>
 
-              {/* Video info overlay */}
-              <div className="absolute bottom-4 left-4 right-4 bg-black/80 backdrop-blur-sm rounded-lg p-4 border border-[#00D9A5]/50">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                  <div>
-                    <p className="text-[#00D9A5] text-xs font-semibold mb-1">Drone Durumu</p>
-                    <p className="text-white text-sm font-bold">✓ Aktif</p>
-                  </div>
-                  <div>
-                    <p className="text-[#00D9A5] text-xs font-semibold mb-1">Batarya</p>
-                    <p className="text-white text-sm font-bold">%{droneCharge}</p>
-                  </div>
-                  <div>
-                    <p className="text-[#00D9A5] text-xs font-semibold mb-1">Yükseklik</p>
-                    <p className="text-white text-sm font-bold">~120 m</p>
-                  </div>
-                  <div>
-                    <p className="text-[#00D9A5] text-xs font-semibold mb-1">Sinyal Gücü</p>
-                    <p className="text-white text-sm font-bold">Mükemmel</p>
-                  </div>
+            {/* Video info below video on mobile, overlay on desktop */}
+            <div className="mt-3 sm:mt-0 sm:absolute sm:bottom-10 sm:left-10 sm:right-10 bg-black/80 backdrop-blur-sm rounded-lg p-3 sm:p-4 border border-[#00D9A5]/50">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4 text-center">
+                <div>
+                  <p className="text-[#00D9A5] text-xs font-semibold mb-1">Drone Durumu</p>
+                  <p className="text-white text-xs sm:text-sm font-bold">✓ Aktif</p>
+                </div>
+                <div>
+                  <p className="text-[#00D9A5] text-xs font-semibold mb-1">Batarya</p>
+                  <p className="text-white text-xs sm:text-sm font-bold">%{droneCharge}</p>
+                </div>
+                <div>
+                  <p className="text-[#00D9A5] text-xs font-semibold mb-1">Yükseklik</p>
+                  <p className="text-white text-xs sm:text-sm font-bold">~120 m</p>
+                </div>
+                <div>
+                  <p className="text-[#00D9A5] text-xs font-semibold mb-1">Sinyal Gücü</p>
+                  <p className="text-white text-xs sm:text-sm font-bold">Mükemmel</p>
                 </div>
               </div>
             </div>
@@ -829,25 +838,25 @@ export default function BirimGirisiPage() {
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header - Mobile App Style */}
-          <div className="bg-gradient-to-r from-red-600 to-orange-600 px-6 py-6 text-white">
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center space-x-3">
-                <div className="bg-white/20 p-3 rounded-xl backdrop-blur-sm">
-                  <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+          <div className="bg-gradient-to-r from-red-600 to-orange-600 px-4 sm:px-6 py-4 sm:py-6 text-white">
+            <div className="flex items-center justify-between gap-3 mb-4">
+              <div className="flex items-center space-x-2 sm:space-x-3 flex-1 min-w-0">
+                <div className="bg-white/20 p-2 sm:p-3 rounded-xl backdrop-blur-sm flex-shrink-0">
+                  <svg className="w-6 h-6 sm:w-8 sm:h-8" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
                     <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd" />
                   </svg>
                 </div>
-                <div>
-                  <h3 className="text-2xl font-bold">Yangın Raporu</h3>
-                  <p className="text-white/90 text-sm">Detaylı Analiz ve Değerlendirme</p>
+                <div className="min-w-0">
+                  <h3 className="text-lg sm:text-2xl font-bold truncate">Yangın Raporu</h3>
+                  <p className="text-white/90 text-xs sm:text-sm truncate">Detaylı Analiz ve Değerlendirme</p>
                 </div>
               </div>
               <button
                 onClick={() => setShowDetailedReport(false)}
-                className="text-white hover:bg-white/20 transition-colors p-2 rounded-lg"
+                className="text-white hover:bg-white/20 transition-colors p-2 rounded-lg flex-shrink-0"
               >
-                <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-6 h-6 sm:w-7 sm:h-7" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
                 </svg>
               </button>
@@ -881,8 +890,8 @@ export default function BirimGirisiPage() {
                   </svg>
                 </div>
                 <div className="flex-1">
-                  <h4 className="text-red-800 font-bold text-lg">ACİL DURUM - AKTİF YANGIN</h4>
-                  <p className="text-red-600 text-sm">Yangın aktif olarak devam etmekte ve müdahale gerektirmektedir.</p>
+                  <h4 className="text-red-800 font-bold text-lg">⚠️ YÜKSEK YANGIN POTANSİYELİ</h4>
+                  <p className="text-red-600 text-sm">Yangın Potansiyeli %85 Kontrol Edilmesi Gerekmektedir.</p>
                 </div>
                 <div className="bg-red-500 text-white px-4 py-2 rounded-lg font-bold animate-pulse">
                   🔥 ACİL
@@ -1062,7 +1071,7 @@ export default function BirimGirisiPage() {
                 <path fillRule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z" clipRule="evenodd" />
               </svg>
               <div>
-                <h3 className="text-2xl font-bold text-white">Yangın Tespit Görüntüsü</h3>
+                <h3 className="text-2xl font-bold text-white">Potansiyel Yangın Tespit Görüntüsü</h3>
                 <p className="text-red-300 text-sm">Drone AI Detection System</p>
               </div>
             </div>
@@ -1077,7 +1086,7 @@ export default function BirimGirisiPage() {
           </div>
 
           {/* Image Content */}
-          <div className="p-6">
+          <div className="p-4 sm:p-6">
             <div className="relative rounded-xl overflow-hidden border-2 border-red-500/50">
               <img 
                 src="/fire_detect.png" 
@@ -1086,30 +1095,30 @@ export default function BirimGirisiPage() {
               />
               
               {/* Live indicator */}
-              <div className="absolute top-4 left-4 bg-red-600 px-4 py-2 rounded-lg flex items-center space-x-2 animate-pulse">
-                <div className="w-3 h-3 bg-white rounded-full"></div>
-                <span className="text-white font-bold text-sm">CANLI TESPİT</span>
+              <div className="absolute top-2 sm:top-4 left-2 sm:left-4 bg-red-600 px-2 sm:px-4 py-1 sm:py-2 rounded-lg flex items-center space-x-1 sm:space-x-2 animate-pulse">
+                <div className="w-2 h-2 sm:w-3 sm:h-3 bg-white rounded-full"></div>
+                <span className="text-white font-bold text-xs sm:text-sm">CANLI TESPİT</span>
               </div>
+            </div>
 
-              {/* Detection info overlay */}
-              <div className="absolute bottom-4 left-4 right-4 bg-black/80 backdrop-blur-sm rounded-lg p-4 border border-red-500/50">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                  <div>
-                    <p className="text-red-400 text-xs font-semibold mb-1">Tespit Güveni</p>
-                    <p className="text-white text-lg font-bold">%87</p>
-                  </div>
-                  <div>
-                    <p className="text-red-400 text-xs font-semibold mb-1">Koordinat</p>
-                    <p className="text-white text-sm font-mono">{fireLocation[0].toFixed(4)}°</p>
-                  </div>
-                  <div>
-                    <p className="text-red-400 text-xs font-semibold mb-1">Yangın Alanı</p>
-                    <p className="text-white text-lg font-bold">~2.4 ha</p>
-                  </div>
-                  <div>
-                    <p className="text-red-400 text-xs font-semibold mb-1">Durum</p>
-                    <p className="text-red-500 text-sm font-bold">🔥 AKTİF</p>
-                  </div>
+            {/* Detection info below image on mobile, overlay on desktop */}
+            <div className="mt-3 sm:mt-0 sm:absolute sm:bottom-10 sm:left-10 sm:right-10 bg-black/80 backdrop-blur-sm rounded-lg p-3 sm:p-4 border border-red-500/50">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4 text-center">
+                <div>
+                  <p className="text-red-400 text-xs font-semibold mb-1">Tespit Güveni</p>
+                  <p className="text-white text-base sm:text-lg font-bold">%87</p>
+                </div>
+                <div>
+                  <p className="text-red-400 text-xs font-semibold mb-1">Koordinat</p>
+                  <p className="text-white text-xs sm:text-sm font-mono">{fireLocation[0].toFixed(4)}°</p>
+                </div>
+                <div>
+                  <p className="text-red-400 text-xs font-semibold mb-1">Potansiyel Yangın Alanı</p>
+                  <p className="text-white text-base sm:text-lg font-bold">~2.4 ha</p>
+                </div>
+                <div>
+                  <p className="text-red-400 text-xs font-semibold mb-1">Durum</p>
+                  <p className="text-red-500 text-xs sm:text-sm font-bold">🔥 AKTİF</p>
                 </div>
               </div>
             </div>

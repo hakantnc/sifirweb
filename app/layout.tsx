@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "YANMASIN - Akıllı Orman Yangını Tespit Sistemi",
-  description: "Yapay zeka destekli drone teknolojisi ile orman yangınlarını erken tespit eden Sıfır Ateş projesi. Türkiye genelinde yangın risk analizi ve anlık izleme.",
+  title: "FEBRESEE - Akıllı Orman Yangını Tespit Sistemi",
+  description: "Yapay zeka destekli drone teknolojisi ile orman yangınlarını erken tespit eden FEBRESEE projesi. Türkiye genelinde yangın risk analizi ve anlık izleme.",
 };
 
 export default function RootLayout({

@@ -24,3 +24,32 @@ body {
   color: #e5e7eb;
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Legend panel mobile/desktop responsive */
+.legend-scroll {
+  /* Mobile: slide in from right when open */
+}
+
+@media (min-width: 768px) {
+  .legend-scroll {
+    /* Desktop: always visible on right side */
+    position: absolute !important;
+    right: 12px !important;
+    top: 12px !important;
+    width: 340px !important;
+    max-width: 340px !important;
+    height: auto !important;
+    max-height: calc(100vh - 200px) !important;
+    border-radius: 12px !important;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -344,6 +344,7 @@ export default function OGMMap() {
   const mapRef = useRef<L.Map | null>(null);
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const forestLayerRef = useRef<L.LayerGroup | null>(null);
+  const scrollPositionRef = useRef<number>(0);
   const [selectedFire, setSelectedFire] = useState<typeof mockFireData[0] | null>(null);
   const [showForestDensity, setShowForestDensity] = useState(true);
   const [showTreeTypes, setShowTreeTypes] = useState(true);
@@ -357,33 +358,58 @@ export default function OGMMap() {
 
   // Lock body scroll when legend is open on mobile
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      if (isLegendOpen && window.innerWidth < 768) {
-        // Prevent body scroll
-        document.body.style.overflow = 'hidden';
-        document.body.style.position = 'fixed';
-        document.body.style.width = '100%';
-        document.body.style.top = `-${window.scrollY}px`;
-      } else {
-        // Restore scroll
-        const scrollY = document.body.style.top;
-        document.body.style.overflow = '';
-        document.body.style.position = '';
-        document.body.style.width = '';
-        document.body.style.top = '';
-        if (scrollY) {
-          window.scrollTo(0, parseInt(scrollY || '0') * -1);
-        }
+    if (typeof window === 'undefined') return;
+
+    const isMobile = window.innerWidth < 768;
+    
+    if (isLegendOpen && isMobile) {
+      // Save current scroll position BEFORE locking
+      scrollPositionRef.current = window.scrollY || window.pageYOffset;
+      console.log('💾 Saving scroll position:', scrollPositionRef.current);
+      
+      // Prevent body scroll
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+      document.body.style.top = `-${scrollPositionRef.current}px`;
+    } else if (!isLegendOpen && isMobile) {
+      // Restore scroll
+      const savedPosition = scrollPositionRef.current;
+      console.log('📜 Restoring scroll position:', savedPosition);
+      
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+      document.body.style.top = '';
+      
+      // Restore the saved scroll position with requestAnimationFrame for smooth restoration
+      if (savedPosition > 0) {
+        requestAnimationFrame(() => {
+          window.scrollTo({
+            top: savedPosition,
+            behavior: 'instant'
+          });
+        });
       }
     }
 
     return () => {
       // Cleanup
-      if (typeof window !== 'undefined') {
+      if (isMobile) {
+        const savedPosition = scrollPositionRef.current;
         document.body.style.overflow = '';
         document.body.style.position = '';
         document.body.style.width = '';
         document.body.style.top = '';
+        
+        if (savedPosition > 0) {
+          requestAnimationFrame(() => {
+            window.scrollTo({
+              top: savedPosition,
+              behavior: 'instant'
+            });
+          });
+        }
       }
     };
   }, [isLegendOpen]);
@@ -879,11 +905,14 @@ export default function OGMMap() {
               bottom: 0,
               backgroundColor: 'rgba(0, 0, 0, 0.7)',
               zIndex: 999,
-              animation: 'fadeIn 0.3s ease-in-out'
+              animation: 'fadeIn 0.3s ease-in-out',
+              touchAction: 'manipulation',
+              cursor: 'pointer'
             }}
-            onClick={() => setIsLegendOpen(false)}
-            onTouchStart={(e) => {
+            onClick={(e) => {
               e.preventDefault();
+              console.log('🔘 Backdrop clicked!');
+              setIsLegendOpen(false);
             }}
           />
         )}
@@ -892,10 +921,13 @@ export default function OGMMap() {
         <button
           onClick={(e) => {
             e.stopPropagation();
+            e.preventDefault();
             console.log('🔘 Toggle clicked! Current state:', isLegendOpen, '→ New state:', !isLegendOpen);
-            setIsLegendOpen(!isLegendOpen);
+            setIsLegendOpen(prev => !prev);
           }}
           className="md:hidden"
+          type="button"
+          aria-label="Toggle legend"
           style={{
             position: 'absolute',
             top: '12px',
@@ -911,15 +943,10 @@ export default function OGMMap() {
             justifyContent: 'center',
             boxShadow: '0 4px 20px rgba(0, 217, 165, 0.5)',
             cursor: 'pointer',
-            transition: 'all 0.3s ease'
-          }}
-          onTouchStart={(e) => {
-            e.preventDefault();
-            e.currentTarget.style.transform = 'scale(0.95)';
-          }}
-          onTouchEnd={(e) => {
-            e.preventDefault();
-            e.currentTarget.style.transform = 'scale(1)';
+            transition: 'all 0.3s ease',
+            touchAction: 'manipulation',
+            WebkitTapHighlightColor: 'transparent',
+            userSelect: 'none'
           }}
         >
           {isLegendOpen ? (
@@ -941,7 +968,7 @@ export default function OGMMap() {
             // Base mobile styles
             position: 'fixed',
             top: '0',
-            right: '0',
+            right: isLegendOpen ? '0' : '-100%',
             zIndex: 1000,
             backgroundColor: 'rgba(48, 48, 48, 0.98)',
             borderRadius: '0',
@@ -956,6 +983,7 @@ export default function OGMMap() {
             overflowY: 'auto',
             overflowX: 'hidden',
             WebkitOverflowScrolling: 'touch',
+            transition: 'right 0.3s ease-in-out',
           }}
           onClick={(e) => {
             // Prevent clicks inside panel from closing it
@@ -974,11 +1002,12 @@ export default function OGMMap() {
             <button
               onClick={(e) => {
                 e.stopPropagation();
+                e.preventDefault();
+                console.log('🔘 Close button clicked!');
                 setIsLegendOpen(false);
               }}
-              onTouchStart={(e) => {
-                e.stopPropagation();
-              }}
+              type="button"
+              aria-label="Close legend"
               style={{
                 backgroundColor: 'transparent',
                 border: 'none',
@@ -989,7 +1018,10 @@ export default function OGMMap() {
                 minHeight: '40px',
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'center'
+                justifyContent: 'center',
+                touchAction: 'manipulation',
+                WebkitTapHighlightColor: 'transparent',
+                userSelect: 'none'
               }}
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
